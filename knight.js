@@ -1,4 +1,4 @@
-function knighMoves(startLoc, endLoc) {
+export function knighMoves(startLoc, endLoc) {
 	// implementing Breadth-first search
 
 	const getValidMoves = (startLocation) => {
@@ -53,11 +53,11 @@ function knighMoves(startLoc, endLoc) {
 	const shortestPath = () => searchEnd(startLoc, endLoc);
 	// console.log(shortestPath());
 	let a = shortestPath();
-	a.forEach((move) => console.log(move));
+	// a.forEach((move) => console.log(move));
 
-	return;
+	return a;
 }
 
-console.log("♘");
+// console.log("♘");
 
-knighMoves([0, 0], [1, 2])
+// knighMoves([0, 0], [1, 2])

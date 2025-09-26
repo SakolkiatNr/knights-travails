@@ -1,25 +1,43 @@
+import { knighMoves } from "./knight.js";
+
+
 function chessBoard(moves) {
 	let b = board(moves);
 	let s = markStrings(b);
+	let totalMoves = moves.length - 1;
 
-	console.log('   +---+---+---+---+---+---+---+---+')
-	console.log(' 0 |', s[0])
-	console.log('   |---+---+---+---+---+---+---+---|')
-	console.log(' 1 |', s[1])
-	console.log('   |---+---+---+---+---+---+---+---|')
-	console.log(' 2 |', s[2])
-	console.log('   |---+---+---+---+---+---+---+---|')
-	console.log(' 3 |', s[3])
-	console.log('   |---+---+---+---+---+---+---+---|')
-	console.log(' 4 |', s[4])
-	console.log('   |---+---+---+---+---+---+---+---|')
-	console.log(' 5 |', s[5])
-	console.log('   |---+---+---+---+---+---+---+---|')
-	console.log(' 6 |', s[6])
-	console.log('   |---+---+---+---+---+---+---+---|')
-	console.log(' 7 |', s[7])
-	console.log('   +---+---+---+---+---+---+---+---+')
-	console.log('     0   1   2   3   4   5   6   7')
+
+
+	console.log('');
+	console.log("  ▌ ▌   ▗    ▌  ▐   ▀▛▘           ▗▜    ");
+	console.log("  ▙▞ ▛▀▖▄ ▞▀▌▛▀▖▜▀   ▌▙▀▖▝▀▖▌ ▌▝▀▖▄▐ ▞▀▘");
+	console.log("  ▌▝▖▌ ▌▐ ▚▄▌▌ ▌▐ ▖  ▌▌  ▞▀▌▐▐ ▞▀▌▐▐ ▝▀▖");
+	console.log("  ▘ ▘▘ ▘▀▘▗▄▘▘ ▘ ▀   ▘▘  ▝▀▘ ▘ ▝▀▘▀▘▘▀▀ ");
+
+	console.log('');
+	console.log('   +---+---+---+---+---+---+---+---+');
+	console.log(' 0 |', s[0]);
+	console.log('   |---+---+---+---+---+---+---+---|');
+	console.log(' 1 |', s[1]);
+	console.log('   |---+---+---+---+---+---+---+---|');
+	console.log(' 2 |', s[2]);
+	console.log('   |---+---+---+---+---+---+---+---|');
+	console.log(' 3 |', s[3]);
+	console.log('   |---+---+---+---+---+---+---+---|');
+	console.log(' 4 |', s[4]);
+	console.log('   |---+---+---+---+---+---+---+---|');
+	console.log(' 5 |', s[5]);
+	console.log('   |---+---+---+---+---+---+---+---|');
+	console.log(' 6 |', s[6]);
+	console.log('   |---+---+---+---+---+---+---+---|');
+	console.log(' 7 |', s[7]);
+	console.log('   +---+---+---+---+---+---+---+---+');
+	console.log('     0   1   2   3   4   5   6   7');
+	console.log('   =================================')
+
+	console.log(`From [${moves[0]}] to [${moves[moves.length - 1]}]`);
+	console.log(`Made it in ${totalMoves} moves! here's the shortest path:`);
+	printPath(moves);
 
 }
 
@@ -37,14 +55,14 @@ function board(moves) {
 			return;
 		}
 
-		if (element === moves[moves.length - 1]) {
-			board[x][y] = 'E';
-			return;
-		}
+		// if (element === moves[moves.length - 1]) {
+		// 	board[x][y] = 'E';
+		// 	return;
+		// }
 
 		board[x][y] = ++count;
 	});
-	// console.log(board);
+
 	return board;
 }
 
@@ -52,19 +70,14 @@ function markStrings(board) {
 	let strings = [];
 
 	board.forEach((row) => {
-		// console.log(row);
-
 		let string = '';
 
 		for (let i = 0; i < 8; i++) {
-			// console.log(row[i]);
-			// first item
 			if (i == 0) {
 				string += `${row[0]} `;
 				continue;
 			}
 
-			// last item
 			if (i == 7) {
 				string += `| ${row[7]} |`;
 				continue;
@@ -79,5 +92,11 @@ function markStrings(board) {
 	return strings;
 }
 
-let moves = [[3, 4], [7, 5], [7, 6], [7, 7], [0, 0]];
+function printPath(moves) {
+	console.log('Start');
+	moves.forEach((move) => console.log(move));
+	console.log('End');
+}
+
+let moves = knighMoves([0, 0], [7, 7]);
 chessBoard(moves);
