@@ -1,3 +1,6 @@
+
+import { displayBoard } from "./chessBoard.js";
+
 export function knighMoves(startLoc, endLoc) {
 	// implementing Breadth-first search
 
@@ -51,13 +54,11 @@ export function knighMoves(startLoc, endLoc) {
 	}
 
 	const shortestPath = () => searchEnd(startLoc, endLoc);
-	// console.log(shortestPath());
 	let a = shortestPath();
-	// a.forEach((move) => console.log(move));
 
 	return a;
 }
 
-// console.log("♘");
 
-// knighMoves([0, 0], [1, 2])
+let test = knighMoves([0, 0], [7, 7]);
+displayBoard(test);

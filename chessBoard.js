@@ -1,20 +1,18 @@
 import { knighMoves } from "./knight.js";
 
 
-function chessBoard(moves) {
+export function displayBoard(moves) {
 	let b = board(moves);
 	let s = markStrings(b);
 	let totalMoves = moves.length - 1;
-
-
 
 	console.log('');
 	console.log("  ▌ ▌   ▗    ▌  ▐   ▀▛▘           ▗▜    ");
 	console.log("  ▙▞ ▛▀▖▄ ▞▀▌▛▀▖▜▀   ▌▙▀▖▝▀▖▌ ▌▝▀▖▄▐ ▞▀▘");
 	console.log("  ▌▝▖▌ ▌▐ ▚▄▌▌ ▌▐ ▖  ▌▌  ▞▀▌▐▐ ▞▀▌▐▐ ▝▀▖");
 	console.log("  ▘ ▘▘ ▘▀▘▗▄▘▘ ▘ ▀   ▘▘  ▝▀▘ ▘ ▝▀▘▀▘▘▀▀ ");
-
 	console.log('');
+
 	console.log('   +---+---+---+---+---+---+---+---+');
 	console.log(' 0 |', s[0]);
 	console.log('   |---+---+---+---+---+---+---+---|');
@@ -34,11 +32,11 @@ function chessBoard(moves) {
 	console.log('   +---+---+---+---+---+---+---+---+');
 	console.log('     0   1   2   3   4   5   6   7');
 	console.log('   =================================')
+	console.log('');
 
 	console.log(`From [${moves[0]}] to [${moves[moves.length - 1]}]`);
 	console.log(`Made it in ${totalMoves} moves! here's the shortest path:`);
 	printPath(moves);
-
 }
 
 function board(moves) {
@@ -98,5 +96,5 @@ function printPath(moves) {
 	console.log('End');
 }
 
-let moves = knighMoves([0, 0], [7, 7]);
-chessBoard(moves);
+// let moves = knighMoves([0, 0], [7, 7]);
+// displayBoard(moves);
