@@ -58,5 +58,6 @@ function knighMoves(startLoc, endLoc) {
 	return;
 }
 
+console.log("♘");
 
 knighMoves([0, 0], [1, 2])
