@@ -1,20 +1,5 @@
-let chessboard = [
-	/*
-	 0  1  2  3  4  5  6  7 */
-	[0, 2, 0, 2, 0, 0, 0, 0], // 0 
-	[2, 0, 0, 0, 2, 0, 0, 0], // 1
-	[0, 0, 1, 0, 0, 0, 0, 0], // 2
-	[2, 0, 0, 0, 2, 0, 0, 0], // 3
-	[0, 2, 0, 2, 0, 0, 0, 0], // 4
-	[0, 0, 0, 0, 0, 0, 0, 0], // 5
-	[0, 0, 0, 0, 0, 0, 0, 0], // 6
-	[0, 0, 0, 0, 0, 0, 0, 0], // 7
-]
-
 function knighMoves(startLoc, endLoc) {
-	// check tree for each move
-	// if found end location
-	// return array of moves
+	// implementing Breadth-first search
 
 	const getValidMoves = (startLocation) => {
 		const [x, y] = startLocation;
@@ -30,19 +15,48 @@ function knighMoves(startLoc, endLoc) {
 		});
 	}
 
-	const getKnightMoves = () => getValidMoves(startLoc);
+	const searchEnd = (start, target) => {
+		// adjacency list
+		let visited = Array.from(new Array(8), () => []);
+		let que = [[start]];
 
-	return { getKnightMoves }
+		while (que.length > 0) {
+			let path = que.shift();
+			let currentMove = path[path.length - 1];
+			let [x, y] = currentMove;
 
+			visited[x].push(y);
+
+			// found target
+			if (x === target[0] && y === target[1]) {
+				return path;
+			}
+
+			// next possibilities
+			const validMoves = getValidMoves(currentMove);
+
+			// filter visited cells
+			const possibilities = validMoves.filter((move) =>
+				!visited[move[0]].includes(move[1]));
+
+			// explore
+			for (let move of possibilities) {
+				let nextPath = path.slice();
+				nextPath.push(move);
+				que.push(nextPath);
+			}
+		}
+
+		return null; // not possible in this case but ok
+	}
+
+	const shortestPath = () => searchEnd(startLoc, endLoc);
+	// console.log(shortestPath());
+	let a = shortestPath();
+	a.forEach((move) => console.log(move));
+
+	return;
 }
 
 
-console.log(knighMoves([0, 1]).getKnightMoves());
-
-
-
-
-
-
-
-
+knighMoves([0, 0], [1, 2])
