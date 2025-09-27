@@ -60,5 +60,5 @@ export function knighMoves(startLoc, endLoc) {
 }
 
 
-let test = knighMoves([0, 0], [7, 7]);
+let test = knighMoves([0, 0], [3, 3]);
 displayBoard(test);
