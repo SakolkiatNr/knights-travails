@@ -7,7 +7,18 @@ if (args.length !== 2) {
 	process.exit(1);
 }
 
-console.log(args);
+// check if input is valide before parsing
+args.forEach(checkValidInput);
+
+function checkValidInput(input) {
+	if (!(input[0] === "[" &&
+		input[input.length - 1] === "]")) {
+		console.log('input must be an array of positions!');
+		console.log('Hint: [x,y]')
+		process.exit(1);
+	}
+}
+
 const start = JSON.parse(args[0]);
 const end = JSON.parse(args[1]);
 
@@ -30,6 +41,5 @@ function validateInput(positions) {
 }
 
 [start, end].forEach(validateInput);
-
 const route = knightMoves(start, end);
 displayBoard(route);
