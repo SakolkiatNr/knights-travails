@@ -1,4 +1,4 @@
-import { knighMoves } from "./knight.js";
+import { knightMoves } from "./knight.js";
 
 
 export function displayBoard(moves) {

@@ -1,7 +1,7 @@
 
 import { displayBoard } from "./chessBoard.js";
 
-export function knighMoves(startLoc, endLoc) {
+export function knightMoves(startLoc, endLoc) {
 	// implementing Breadth-first search
 
 	const getValidMoves = (startLocation) => {
@@ -58,7 +58,3 @@ export function knighMoves(startLoc, endLoc) {
 
 	return a;
 }
-
-
-let test = knighMoves([0, 0], [3, 3]);
-displayBoard(test);
